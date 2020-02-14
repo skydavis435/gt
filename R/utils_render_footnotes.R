@@ -97,7 +97,7 @@ resolve_footnotes_styles <- function(data,
     tbl <-
       tbl %>%
       dplyr::filter(
-        colname %in% c(NA_character_, dt_boxhead_get_vars_default(data = data))
+        colname %in% c(NA_character_, "::stub", dt_boxhead_get_vars_default(data = data))
       )
   }
 

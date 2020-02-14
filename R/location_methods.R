@@ -25,7 +25,8 @@ as_locations <- function(locations) {
 add_summary_location_row <- function(loc,
                                      data,
                                      style,
-                                     df_type = "styles_df") {
+                                     df_type = "styles_df",
+                                     stub = FALSE) {
 
   stub_df <- dt_stub_df_get(data = data)
 
@@ -78,6 +79,10 @@ add_summary_location_row <- function(loc,
       )
 
     columns <- dt_boxhead_get_vars_default(data = data)[col_idx]
+
+    if (stub) {
+      columns <- NA_character_
+    }
 
     if (length(columns) == 0) {
       stop("The location requested could not be resolved:\n",

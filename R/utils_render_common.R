@@ -26,7 +26,8 @@ colname_to_colnum <- function(data,
 
   for (col in colname) {
     if (is.na(col)) {
-      col_nums <- c(col_nums, NA_integer_)
+      #col_nums <- c(col_nums, NA_integer_)
+      col_nums <- c(col_nums, 0L)
     } else {
       col_nums <- c(col_nums, which(dt_boxhead_get_vars_default(data = data) == col))
     }

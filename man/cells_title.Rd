@@ -93,6 +93,7 @@ Other Helper Functions:
 \code{\link{cells_row_groups}()},
 \code{\link{cells_stubhead}()},
 \code{\link{cells_stub}()},
+\code{\link{cells_summary_stub}()},
 \code{\link{cells_summary}()},
 \code{\link{currency}()},
 \code{\link{escape_latex}()},

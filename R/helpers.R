@@ -920,6 +920,71 @@ cells_summary <- function(groups = TRUE,
   cells
 }
 
+#' Location helper for targeting group summary stub cells
+#'
+#' The `cells_summary_stub()` function is used to target the stub cells in a
+#' group summary and it is useful when applying a footnote with [tab_footnote()]
+#' or adding a custom style with [tab_style()]. The function is expressly used
+#' in each of those functions' `locations` argument.
+#'
+#' When using any of the location helper functions with an appropriate function
+#' that has a `locations` argument, multiple locations can be targeted by
+#' enclosing several `cells_*()` helper functions in a `list()`. The following
+#' helper functions can be used to target cells (roughly in order from the top
+#' to the bottom of a table):
+#' \itemize{
+#' \item [cells_title()]: targets the table title or the table subtitle
+#' depending on the value given to the `groups` argument (`"title"` or
+#' `"subtitle"`).
+#' \item [cells_stubhead()]: targets the stubhead location, a cell of which is
+#' only available when there is a stub; a label in that location can be created
+#' by using the [tab_stubhead()] function.
+#' \item [cells_column_spanners()]: targets the spanner column labels, which
+#' appear above the column labels.
+#' \item [cells_column_labels()]: targets the column labels.
+#' \item [cells_row_groups()]: targets the row group labels in any available row
+#' groups using the `groups` argument.
+#' \item [cells_stub()]: targets row labels in the table stub using the `rows`
+#' argument.
+#' \item [cells_body()]: targets data cells in the table body using
+#' intersections of `columns` and `rows`.
+#' \item [cells_summary()]: targets summary cells in the table body using the
+#' `groups` argument and intersections of `columns` and `rows`.
+#' \item [cells_grand_summary()]: targets cells of the table's grand summary
+#' using intersections of `columns` and `rows`
+#' }
+#'
+#' @param groups The names of the groups that the summary rows reside in.
+#' @param rows The names of the rows that are to be targeted.
+#'
+#' @return A list object with the classes `cells_summary_stub` and
+#'   `location_cells`.
+#'
+#' @family Helper Functions
+#'
+#' @import rlang
+#' @export
+cells_summary_stub <- function(groups = TRUE,
+                               rows = TRUE) {
+
+  # Capture expressions for the `groups`,
+  # `columns`, and `rows` arguments
+  group_expr <- rlang::enquo(groups)
+  row_expr <- rlang::enquo(rows)
+
+  # Create the `cells_summary_stub` object
+  cells <-
+    list(
+      groups = group_expr,
+      rows = row_expr
+    )
+
+  # Apply the `cells_summary` and `location_cells` classes
+  class(cells) <- c("cells_summary_stub", "location_cells")
+
+  cells
+}
+
 #' Location helper for targeting cells in a grand summary
 #'
 #' The `cells_grand_summary()` function is used to target the cells in a grand

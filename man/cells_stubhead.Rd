@@ -84,6 +84,7 @@ Other Helper Functions:
 \code{\link{cells_grand_summary}()},
 \code{\link{cells_row_groups}()},
 \code{\link{cells_stub}()},
+\code{\link{cells_summary_stub}()},
 \code{\link{cells_summary}()},
 \code{\link{cells_title}()},
 \code{\link{currency}()},
